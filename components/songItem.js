@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import { Themes } from "../assets/Themes";
 import millisToMinutesAndSeconds from "../utils/millisToMinutesAndSeconds"
 
 
@@ -14,44 +13,84 @@ export default function songItem ({ listIndex, albumImageURL, songTitle, artist,
 
     <View style={styles.itemContainer}>
 
-      <Text style={styles.fadeText}>{listIndex}</Text>
+      <View style={styles.indexContainer}>
+        <Text style={styles.fadeText} numberOfLines={1}>{listIndex}</Text>
+      </View>
+        
+      <View style={styles.albumContainer}>
+        <Image source={{uri: albumImageURL}} style={styles.albumImage}/>
+      </View>
+        
 
-      <Image source={albumImageURL} style={styles.albumImage}/>
-
-      <View style={styles.songTitleArtist}>
-
-        <Text style={styles.brightText}>{songTitle}</Text>
-        <Text style={styles.fadeText}>{artist}</Text>
-
+      <View style={styles.songTitleArtistContainer}>
+        <Text style={styles.brightText} numberOfLines={1}>{songTitle}</Text>
+        <Text style={styles.fadeText} numberOfLines={1}>{artist}</Text>
       </View>
 
-      <Text style={styles.brightText}>{albumName}</Text>
+      <View style={styles.albumNameContainer}>
+        <Text style={styles.brightText} numberOfLines={1}>{albumName}</Text>
+      </View>
 
-      <Text style={styles.brightText}>{getDurationMinSec(songDuration)}</Text>
-
+      <View style={styles.durationContainer}>
+        <Text style={styles.brightText} numberOfLines={1}>{getDurationMinSec(songDuration)}</Text>
+      </View>
+        
     </View>
 
   );
 }
 
-
-
 const styles = StyleSheet.create({
   itemContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
+    marginVertical: 5,
+    height: 70
+  },
+  indexContainer: {
+    alignItems: "center",
+    height: "100%",
+    width: "10%",
+    justifyContent: "center"
+  },
+  albumContainer: {
+    alignItems: "center",
+    height: "100%",
+    width: "18%",
+  },
+  songTitleArtistContainer: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    height: "100%",
+    width: "30%",
+    justifyContent: "center",
+    marginLeft: "3%",
+    marginRight: "3%",
+  },
+  albumNameContainer: {
+    alignItems: "flex-start",
+    height: "100%",
+    width: "20%",
+    justifyContent: "center",
+    marginRight: "3%"
+  },
+  durationContainer: {
+    alignItems: "flex-start",
+    height: "100%",
+    width: "25%",
+    justifyContent: "center"
   },
   albumImage: {
-
-  },
-  songTitleArtist: {
-
+    height: "100%",
+    aspectRatio: 1
   },
   brightText: {
-
+    fontSize: 14,
+    color: "white",
   },
   fadeText: {
-
-  }
+    fontSize: 12,
+    color: "grey"
+  },
 
 });

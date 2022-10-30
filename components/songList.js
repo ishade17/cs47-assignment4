@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
-import { Images, Themes } from "../assets/Themes/index";
+import { Images } from "../assets/Themes/index";
 import SongItem from "./songItem"
 
 
-const renderSongItem = ({ item, index }) => (
+const renderSongItem = ({ item }) => (
   <SongItem
-    listIndex={index}
-    albumImageURL={item.songName} //change
-    songTitle={item.songName} //change
-    artist={item.songName} //change
-    albumName={item.songName} //change
-    songDuration={item.songName} //change
+    listIndex={item.track_number}
+    albumImageURL={item.album.images[0].url} 
+    songTitle={item.name} 
+    artist={item.artists[0].name} 
+    albumName={item.album.name} 
+    songDuration={item.duration_ms} 
   />
 );
 
@@ -25,9 +25,9 @@ const songList = (tracks) => {
       </View>
 
       <FlatList
-        data={tracks} // the array of data that the FlatList displays
-        renderItem={(item) => renderSongItem(item)} // function that renders each item
-        keyExtractor={(item) => item.id} // unique key for each item
+        data={tracks.tracks}
+        renderItem={(item) => renderSongItem(item)}
+        keyExtractor={(item) => item.track_number}
       />
 
     </View>    
@@ -35,13 +35,13 @@ const songList = (tracks) => {
   );
 }
 
-
 export default songList;
 
 const styles = StyleSheet.create({
   titleRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center"
   },
   spotifyIcon: {
     width: 30,

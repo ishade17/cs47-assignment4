@@ -24,7 +24,6 @@ WebBrowser.maybeCompleteAuthSession();
 const useSpotifyAuth = (ALBUM_ONLY = false) => {
   const [token, setToken] = useState("");
   const [tracks, setTracks] = useState([]);
-  // console.log("authorizing...")
   const [_, response, promptAsync] = useAuthRequest(
     {
       responseType: ResponseType.Token,
@@ -45,9 +44,6 @@ const useSpotifyAuth = (ALBUM_ONLY = false) => {
     },
     DISCOVERY
   );
-  // console.log("token:")
-  // console.log(token)
-  console.log("token is set (in useSpotifyAuth)")
   useEffect(() => {
     if (response?.type === "success") {
       const { access_token } = response.params;
@@ -73,11 +69,7 @@ const useSpotifyAuth = (ALBUM_ONLY = false) => {
 
     if (token) {
       // Authenticated, make API request
-      // console.log("fetching tracks")
       fetchTracks();
-      // console.log(tracks)
-      console.log("tracks are fetched (in useSpotifyAuth)")
-
     }
   }, [token]);
 

@@ -3,7 +3,6 @@ import { Images, Themes } from "../assets/Themes/index";
 
 const SpotifyAuthButton = ({ stateFunction }) => {
 
-
   return (
     
     <Pressable style={styles.connectButton} onPress={stateFunction}> 
@@ -29,7 +28,6 @@ const styles = StyleSheet.create({
     backgroundColor: Themes.colors.spotify,
     height: "5%",
     width: "70%",
-    // justifyContent: 'space-around',
   },
   connectButtonText: {
     fontWeight: 'bold',
