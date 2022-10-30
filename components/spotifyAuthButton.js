@@ -1,11 +1,8 @@
 import { StyleSheet, Text, Pressable, Image } from "react-native";
-import useSpotifyAuth from "../utils/useSpotifyAuth";
 import { Images, Themes } from "../assets/Themes/index";
-import SpotifyLogo from "../assets/Images/images"
 
 const SpotifyAuthButton = ({ stateFunction }) => {
 
-  // const { token, tracks, getSpotifyAuth } = useSpotifyAuth(true);
 
   return (
     
