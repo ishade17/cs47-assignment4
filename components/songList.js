@@ -4,9 +4,9 @@ import SongItem from "./songItem"
 
 
 const renderSongItem = ( item , navigation ) => (
-
   <SongItem
-    navigation={{navigation}}
+    // navigation={{navigation}}
+    preview_url={item.preview_url}
     external_url={item.external_urls.spotify}
     albumImageURL={item.album.images[0].url} 
     songTitle={item.name} 
@@ -20,7 +20,7 @@ const renderSongItem = ( item , navigation ) => (
 // const songList = ( tracks ) => {
 const songList = (tracks, navigation) => {
 
-  // console.log(tracks)
+  console.log(tracks)
   // console.log("navigation from songList.js")
   // console.log({navigation})
 

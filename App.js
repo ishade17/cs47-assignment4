@@ -8,6 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SpotifyAuthButton from "./components/spotifyAuthButton"
 import SongList from "./components/songList"
 import DetailedSongScreen from "./components/detailedSong"
+import PreviewSongScreen from "./components/previewSong"
 
 const Stack = createStackNavigator();
 
@@ -21,10 +22,7 @@ function HomeScreen({navigation}) {
   }
   
   if (token && tracks) {
-    console.log("navigation from app.js")
-    console.log(navigation)
     contentDisplayed = <SongList navigation={navigation} tracks={tracks}/>
-    // contentDisplayed = <SongList tracks={tracks}/>
   }
 
   return (
@@ -40,8 +38,10 @@ export default function App() {
     <NavigationContainer style={styles.container}>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-        <Stack.Screen name="DetailedSong" component={DetailedSongScreen}/>
-        {/* <Stack.Screen name="Home" component={} options={{headerShown: false}}/> */}
+        <Stack.Screen name="DetailedSong" component={DetailedSongScreen}
+          options={{headerStyle: {backgroundColor: Themes.colors.background}, headerTintColor: "white", title: "Song Details"}} />
+        <Stack.Screen name="PreviewSong" component={PreviewSongScreen}
+          options={{headerStyle: {backgroundColor: Themes.colors.background}, headerTintColor: "white", title: "Song Preview"}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
