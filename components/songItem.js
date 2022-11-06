@@ -1,27 +1,34 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import millisToMinutesAndSeconds from "../utils/millisToMinutesAndSeconds"
+import { Ionicons } from '@expo/vector-icons';
 
 
 function getDurationMinSec(durationMilli) {
   return millisToMinutesAndSeconds(durationMilli)
 }
 
-export default function songItem ({ listIndex, albumImageURL, songTitle, artist, albumName, songDuration }) {
-
+export default function songItem ({ navigation, external_url, albumImageURL, songTitle, artist, albumName, songDuration }) {  
+  
+  // console.log("navigation in songItem")
+  // console.log(navigation)
+  // console.log({navigation})
 
   return (
 
     <View style={styles.itemContainer}>
 
-      <View style={styles.indexContainer}>
-        <Text style={styles.fadeText} numberOfLines={1}>{listIndex}</Text>
-      </View>
+      <Pressable style={styles.playButtonContainer} onPress={() => {
+        navigation.navigate("DetailedSong", {
+          url: external_url
+        });
+      }}> 
+        <Ionicons name="play-circle-outline" size={32} color="green" />
+      </Pressable>
         
       <View style={styles.albumContainer}>
         <Image source={{uri: albumImageURL}} style={styles.albumImage}/>
       </View>
         
-
       <View style={styles.songTitleArtistContainer}>
         <Text style={styles.brightText} numberOfLines={1}>{songTitle}</Text>
         <Text style={styles.fadeText} numberOfLines={1}>{artist}</Text>
@@ -47,7 +54,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     height: 70
   },
-  indexContainer: {
+  playButtonContainer: {
     alignItems: "center",
     height: "100%",
     width: "10%",

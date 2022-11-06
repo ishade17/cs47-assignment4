@@ -3,20 +3,29 @@ import { Images } from "../assets/Themes/index";
 import SongItem from "./songItem"
 
 
-const renderSongItem = ({ item }) => (
+const renderSongItem = ( item , navigation ) => (
+
   <SongItem
-    listIndex={item.track_number}
+    navigation={{navigation}}
+    external_url={item.external_urls.spotify}
     albumImageURL={item.album.images[0].url} 
     songTitle={item.name} 
     artist={item.artists[0].name} 
     albumName={item.album.name} 
     songDuration={item.duration_ms} 
   />
+
 );
 
-const songList = (tracks) => {
+// const songList = ( tracks ) => {
+const songList = (tracks, navigation) => {
+
+  // console.log(tracks)
+  // console.log("navigation from songList.js")
+  // console.log({navigation})
 
   return (
+
     <View style={styles.container}>
 
       <View style={styles.titleRow}>
@@ -26,12 +35,13 @@ const songList = (tracks) => {
 
       <FlatList
         data={tracks.tracks}
-        renderItem={(item) => renderSongItem(item)}
+        renderItem={({ item }) => renderSongItem(item, navigation)}
+        // renderItem={(item) => renderSongItem(item)}
         keyExtractor={(item) => item.track_number}
       />
 
     </View>    
- 
+
   );
 }
 
