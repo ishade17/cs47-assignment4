@@ -8,7 +8,7 @@ function getDurationMinSec(durationMilli) {
   return millisToMinutesAndSeconds(durationMilli)
 }
 
-// export default function songItem ({ navigation, external_url, albumImageURL, songTitle, artist, albumName, songDuration }) {  
+// export default function songItem ({ navigation, preview_url, external_url, albumImageURL, songTitle, artist, albumName, songDuration }) {  
 export default function songItem ({ preview_url, external_url, albumImageURL, songTitle, artist, albumName, songDuration }) {  
 
   const navigation = useNavigation();

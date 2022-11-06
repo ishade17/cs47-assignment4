@@ -4,6 +4,8 @@ import SongItem from "./songItem"
 
 
 const renderSongItem = ( item , navigation ) => (
+// const renderSongItem = ( item ) => (
+
   <SongItem
     // navigation={{navigation}}
     preview_url={item.preview_url}
@@ -17,12 +19,10 @@ const renderSongItem = ( item , navigation ) => (
 
 );
 
-// const songList = ( tracks ) => {
 const songList = (tracks, navigation) => {
+// const songList = ( tracks ) => {
 
   console.log(tracks)
-  // console.log("navigation from songList.js")
-  // console.log({navigation})
 
   return (
 

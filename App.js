@@ -23,6 +23,8 @@ function HomeScreen({navigation}) {
   
   if (token && tracks) {
     contentDisplayed = <SongList navigation={navigation} tracks={tracks}/>
+    // contentDisplayed = <SongList tracks={tracks}/>
+
   }
 
   return (
